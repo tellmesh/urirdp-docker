@@ -1,19 +1,27 @@
-# Architecture
+# Architecture — urirdp-docker
 
 ```text
-RDP client
-  -> XRDP session in container
-  -> XFCE desktop
-  -> X11 display, usually :10
+RDP client (:3389)
+  → XRDP + XFCE in container
+  → X11 display (usually :10)
 
 URI client
-  -> POST /uri/call on port 8795
-  -> urisys-rdp runtime
-  -> rdp://, kvm://, him://, ocr://, llm:// handlers
-  -> X11 tools: xdotool, scrot, tesseract
+  → POST /uri/call :8795
+  → urirdpedge (urisys-rdp)
+  → urisysedge.Runtime + urisysedge.http.serve
+  → standalone packs:
+       urirdp   (rdp://)
+       urikvm   (kvm://)
+       urihim   (him://)
+       uriocr   (ocr://)
+       urillm   (llm://)
+       urishell (shell://)
+       urienv   (env://)
+       uribrowser + lab_browser aliases (browser://)
+  → X11 tools: xdotool, scrot, tesseract
 ```
 
-`URL` is only the transport address. `URI` is the command/resource identity.
+`URL` is transport. `URI` is command identity.
 
 Example:
 
@@ -26,11 +34,20 @@ POST http://127.0.0.1:8795/uri/call
 }
 ```
 
-The task-level route calls lower layers:
+Pipeline inside `kvm://.../click-text`:
 
 ```text
-kvm://.../screenshot
-ocr://.../text
-llm://.../analyze
-him://.../click
+kvm://.../monitor/primary/query/screenshot
+ocr://.../image/latest/query/text
+llm://.../vision/query/analyze
+him://.../mouse/command/click
 ```
+
+## Related repos
+
+| Repo | Role |
+|------|------|
+| `urirdpedge` | compose + serve |
+| `urirdp` | `rdp://` only |
+| `urisysedge` | shared runtime |
+| `uricore` | optional routing engine under Runtime |

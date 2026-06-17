@@ -120,3 +120,34 @@ That means the same KVM contract can later target other systems: a local Linux d
 ## Security
 
 Real input control is disabled by default. The package requires both approval and `allow_real`/`URISYS_ALLOW_REAL=1` before using `xdotool` and `scrot` against the active X session.
+
+## Stack (standalone packs)
+
+```text
+tellmesh/
+├── urirdpedge/          → urisys-rdp CLI + HTTP (:8795)
+├── urirdp/              → rdp:// pack only
+├── urikvm/ urihim/ uriocr/ urillm/
+├── urishell/ urienv/ uribrowser/
+├── urisysedge/          → Runtime + shared HTTP transport
+└── urirdp-docker/       → Dockerfile, config, flows, markpacts
+```
+
+Local tests:
+
+```bash
+./scripts/test-local.sh
+```
+
+Build from tellmesh root:
+
+```bash
+docker build -f urirdp-docker/Dockerfile /path/to/tellmesh
+```
+
+## Docs
+
+- [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md)
+- [docs/KVM_AUTOMATION.md](docs/KVM_AUTOMATION.md)
+- [docs/RDP_USAGE.md](docs/RDP_USAGE.md)
+- [docs/MARKPACT.md](docs/MARKPACT.md)

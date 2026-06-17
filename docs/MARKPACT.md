@@ -1,12 +1,18 @@
 # Markpact files
 
-This package includes contracts for:
+Contracts in this repo (`markpacts/`) describe the **Docker bundle** view of desktop automation.
 
-- `urirdp.contract.markpact.md`
-- `urikvm.contract.markpact.md`
-- `urihim.contract.markpact.md`
-- `uriocr.contract.markpact.md`
-- `urillm-vision.contract.markpact.md`
-- `urikvm-rdp.contract.markpact.md` bundle
+Canonical capability contracts live in sibling pack repos where applicable:
 
-The portal `markpact.com` should store these as reusable source contracts. The Docker package is one implementation of those contracts.
+| File here | Implements |
+|-----------|------------|
+| `urirdp.contract.markpact.md` | `urirdp` pack (`rdp://`) |
+| `urikvm.contract.markpact.md` | `urikvm` pack |
+| `urihim.contract.markpact.md` | `urihim` pack |
+| `uriocr.contract.markpact.md` | `uriocr` pack |
+| `urillm-vision.contract.markpact.md` | `urillm` vision |
+| `urikvm-rdp.contract.markpact.md` | bundle overlay |
+
+Runtime: `urirdpedge` (`urisys-rdp`) composing standalone wheels.
+
+The portal `markpact.com` stores reusable source contracts; this Docker package is one implementation.

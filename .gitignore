@@ -8,3 +8,6 @@ data/screenshots/*.png
 
 # Environment variables
 .env
+
+# Markpact unpack output (urisys markpact run/materialize)
+.markpact/

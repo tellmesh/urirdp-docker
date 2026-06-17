@@ -27,6 +27,12 @@ WORKDIR /build
 COPY urisysedge /build/urisysedge
 COPY urioperators /build/urioperators
 COPY urirdp /build/urirdp
+COPY urirdpedge /build/urirdpedge
+COPY urikvm /build/urikvm
+COPY urihim /build/urihim
+COPY uriocr /build/uriocr
+COPY urillm /build/urillm
+COPY urishell /build/urishell
 COPY urienv /build/urienv
 COPY uribrowser /build/uribrowser
 COPY urirdp-docker /build/urirdp-docker
@@ -41,9 +47,16 @@ RUN chmod +x /etc/xrdp/startwm.sh /opt/urirdp/docker/bootstrap-rdp-session.sh /u
        -e /build/urisysedge \
        -e /build/urioperators \
        -e /build/urirdp \
+       -e /build/urikvm \
+       -e /build/urihim \
+       -e /build/uriocr \
+       -e /build/urillm \
+       -e /build/urishell \
        -e /build/urienv \
        -e /build/uribrowser \
-       -e /build/urirdp-docker
+       -e /build/urirdpedge \
+       -e /build/urirdp-docker \
+    && mkdir -p /opt/urirdp/data
 
 WORKDIR /opt/urirdp
 EXPOSE 3389 8795

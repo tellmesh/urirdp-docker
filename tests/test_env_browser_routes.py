@@ -2,9 +2,7 @@
 
 from __future__ import annotations
 
-import json
-
-from urirdpedge.cli import build_runtime
+from urirdpedge.runtime import build_runtime
 
 
 class _Args:

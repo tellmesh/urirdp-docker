@@ -1,6 +1,6 @@
 import os
 
-from urirdpedge.env import load_env_policy, resolve_env_var
+from urisysedge.env import load_env_policy, resolve_env_var
 
 
 def test_load_env_policy_includes_llm_vars():
