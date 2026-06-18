@@ -1,6 +1,6 @@
 import os
 
-from urisysedge.env import load_env_policy, resolve_env_var
+from uri_control.edge.env import load_env_policy, resolve_env_var
 
 
 def test_load_env_policy_includes_llm_vars():
