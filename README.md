@@ -129,7 +129,7 @@ tellmesh/
 ├── urirdp/              → rdp:// pack only
 ├── urikvm/ urihim/ uriocr/ urillm/
 ├── urishell/ urienv/ uribrowser/
-├── urisysedge/          → Runtime + shared HTTP transport
+├── `uricore` (`uri_control.edge`)/          → Runtime + shared HTTP transport
 └── urirdp-docker/       → Dockerfile, config, flows, markpacts
 ```
 
@@ -151,3 +151,18 @@ docker build -f urirdp-docker/Dockerfile /path/to/tellmesh
 - [docs/KVM_AUTOMATION.md](docs/KVM_AUTOMATION.md)
 - [docs/RDP_USAGE.md](docs/RDP_USAGE.md)
 - [docs/MARKPACT.md](docs/MARKPACT.md)
+
+## Ekosystem TellMesh
+
+Orchestrator: **[urisys](https://github.com/tellmesh/urisys)** · Mapa: **[MESH.md](https://github.com/tellmesh/urisys/blob/main/docs/MESH.md)** · Model: **[ECOSYSTEM.md](https://github.com/tellmesh/urisys/blob/main/../docs/ECOSYSTEM.md)**
+
+| Pole | Wartość |
+|------|---------|
+| **Warstwa** | Docker glue |
+| **Obraz** | RDP desktop automation |
+| **Zależności** | urirouter, uricore, urirdpedge |
+
+Runtime edge: **`uri_control.edge`** w pakiecie **`uricore`** (legacy `urisysedge` usunięty 2026-06).
+Router intencji: **`urirouter`** (`uri_router`) — resolve + HTTP/MQTT delegate.
+
+<!-- end-ecosystem -->
