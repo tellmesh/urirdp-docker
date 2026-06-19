@@ -8,7 +8,7 @@ RDP client (:3389)
 URI client
   → POST /uri/call :8795
   → urirdpedge (urisys-rdp)
-  → urisysedge.Runtime + uri_control.edge.http.serve
+  → `uri_control.edge`.Runtime + uri_control.edge.http.serve
   → standalone packs:
        urirdp   (rdp://)
        urikvm   (kvm://)
@@ -49,5 +49,5 @@ him://.../mouse/command/click
 |------|------|
 | `urirdpedge` | compose + serve |
 | `urirdp` | `rdp://` only |
-| `urisysedge` | shared runtime |
+| ``uri_control.edge`` | shared runtime |
 | `uricore` | optional routing engine under Runtime |

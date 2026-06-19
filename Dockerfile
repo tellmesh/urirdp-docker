@@ -24,8 +24,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /build
-COPY urirouter /build/urirouter
-COPY uricore /build/uricore
+COPY uriresolver /build/uriresolver
+COPY uriguard /build/uriguard
+COPY uricontrol /build/uricontrol
 COPY urioperators /build/urioperators
 COPY urirdp /build/urirdp
 COPY urirdpedge /build/urirdpedge
@@ -45,8 +46,9 @@ COPY urirdp-docker/docker/supervisord.conf /etc/supervisor/conf.d/urirdp.conf
 COPY urirdp-docker/docker/entrypoint.sh /usr/local/bin/urirdp-entrypoint
 RUN chmod +x /etc/xrdp/startwm.sh /opt/urirdp/docker/bootstrap-rdp-session.sh /usr/local/bin/urirdp-entrypoint \
     && python3 -m pip install --break-system-packages \
-       -e /build/urirouter \
-    -e /build/uricore \
+       -e /build/uriresolver \
+    -e /build/uriguard \
+    -e /build/uricontrol \
        -e /build/urioperators \
        -e /build/urirdp \
        -e /build/urikvm \

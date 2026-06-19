@@ -129,7 +129,7 @@ tellmesh/
 ├── urirdp/              → rdp:// pack only
 ├── urikvm/ urihim/ uriocr/ urillm/
 ├── urishell/ urienv/ uribrowser/
-├── `uricore` (`uri_control.edge`)/          → Runtime + shared HTTP transport
+├── `uricontrol` (`uri_control.edge`)/          → Runtime + shared HTTP transport
 └── urirdp-docker/       → Dockerfile, config, flows, markpacts
 ```
 
@@ -154,15 +154,15 @@ docker build -f urirdp-docker/Dockerfile /path/to/tellmesh
 
 ## Ekosystem TellMesh
 
-Orchestrator: **[urisys](https://github.com/tellmesh/urisys)** · Mapa: **[MESH.md](https://github.com/tellmesh/urisys/blob/main/docs/MESH.md)** · Model: **[ECOSYSTEM.md](https://github.com/tellmesh/urisys/blob/main/../docs/ECOSYSTEM.md)**
+Orchestrator: **[urisys](https://github.com/tellmesh/urisys)** · Mapa: **[MESH.md](https://github.com/tellmesh/urisys/blob/main/docs/MESH.md)** · Model: **[ECOSYSTEM.md](https://github.com/tellmesh/urisys/blob/main/docs/ECOSYSTEM.md)**
 
 | Pole | Wartość |
 |------|---------|
 | **Warstwa** | Docker glue |
 | **Obraz** | RDP desktop automation |
-| **Zależności** | urirouter, uricore, urirdpedge |
+| **Zależności** | uriresolver, uriguard, uricontrol, urirdpedge |
 
-Runtime edge: **`uri_control.edge`** w pakiecie **`uricore`** (legacy `urisysedge` usunięty 2026-06).
-Router intencji: **`urirouter`** (`uri_router`) — resolve + HTTP/MQTT delegate.
+Runtime edge: **`uri_control.edge`** w pakiecie **`uricontrol`** (legacy PyPI `uricore` / `urisysedge` usunięty 2026-06).
+Resolver intencji: **`uriresolver`** (`uri_resolver`) + transport w **`uritransport`**; policy gate: **`uriguard`** (`uri_guard`).
 
 <!-- end-ecosystem -->
